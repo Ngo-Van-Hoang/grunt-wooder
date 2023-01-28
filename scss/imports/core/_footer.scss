@@ -1,0 +1,40 @@
+// css footer
+//footer
+.footer {
+    --lh: 83px;
+    --fz: 12px;
+    height: 80px;
+    background: $black-cl;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        .footer__copyright {
+            @include text(var(--fz), pr, 21px, 0.8px, #b0b0b0, none);
+        }
+        .footer__logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            a {
+                display: flex;
+                align-items: center;
+            }
+        }
+        .footer__uptop {
+            a {
+                @include text(var(--fz), pr, var(--lh), 0.8px, #b0b0b0, uppercase);
+            }
+        }
+    }
+    @include xs {
+        --lh: 20px;
+        --fz: 16px;
+        height: 160px;
+        .container {
+            flex-direction: column;
+            justify-content: space-around;
+        }
+    }
+}

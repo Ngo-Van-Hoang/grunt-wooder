@@ -1,0 +1,229 @@
+// css img, button, heading, title, input, elements, components...
+img {
+    max-width: 100%;
+    height: auto;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    &.--center {
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+// colors (tuỳ chỉnh)
+.--white-cl {
+    color: $white-cl;
+}
+
+.--black-cl {
+    color: $black-cl;
+}
+
+.--blue-cl {
+    color: $blue-cl;
+}
+
+// css article (nội dung chi tiết bài viết)
+article {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        // font-family: ib; // font bold
+        display: block;
+    }
+    h1 {
+        font-size: var(--h1-fs);
+        line-height: var(--h1-lh);
+        margin: 0 0 0.67rem 0;
+    }
+    h2 {
+        font-size: var(--h2-fs);
+        line-height: var(--h2-lh);
+        margin: 0 0 0.75rem 0;
+    }
+    h3 {
+        font-size: var(--h3-fs);
+        line-height: var(--h3-lh);
+        margin: 0 0 0.83rem 0;
+    }
+    h4 {
+        font-size: var(--h4-fs);
+        line-height: var(--h4-lh);
+        margin: 0 0 1.12rem 0;
+    }
+    h5 {
+        font-size: var(--h5-fs);
+        line-height: var(--h5-lh);
+        margin: 0 0 1.5rem 0;
+    }
+    h6 {
+        font-size: 0.67rem;
+        margin: 0 0 1.67rem 0;
+    }
+    p {
+        margin: 0 0 1.12rem 0;
+    }
+    strong {
+        // font-family: ib; // font bold
+    }
+    ol,
+    ul {
+        list-style: initial;
+        padding-left: 18px;
+    }
+    img {
+        display: inline-block;
+        height: auto;
+        overflow: hidden;
+        border-radius: 10px;
+        margin: 25px auto;
+    }
+    .video {
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+        position: relative;
+        margin: 25px auto;
+        iframe,
+        video {
+            position: absolute;
+            @include size(100%);
+            top: 0;
+            left: 0;
+        }
+    }
+    @include xs {
+        img {
+            margin: 20px auto;
+        }
+    }
+}
+
+.heading {
+    font-family: ib;
+    &.--h1 {
+        font-size: var(--h1-fs);
+        line-height: var(--h1-lh);
+    }
+    &.--h2 {
+        font-size: var(--h2-fs);
+        line-height: var(--h2-lh);
+    }
+}
+
+.textbox {
+    --pd-text-right: 100px;
+    --pd-right: 20px;
+    padding-left: var(--pd-text-right);
+    padding-right: var(--pd-right);
+    padding-top: 80px;
+    .heading {
+        @include text(40px, pb, 52px, 1.12px, $black-cl, uppercase);
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        &:before {
+            content: "";
+            position: relative;
+            width: 80px;
+            height: 1.5px;
+            background: $grey-cl;
+            display: inline-block;
+            margin-left: -80px;
+            left: -20px;
+        }
+        &.--yellow {
+            color: $main-cl;
+            line-height: 50px;
+            letter-spacing: 0.4px;
+        }
+    }
+    .dsc {
+        @include text(16px, pr, 22px, 0.4px, $grey-cl, none);
+        padding-top: 10px;
+    }
+    .--white {
+        margin: 25px 0 45px;
+        color: $white-cl;
+    }
+    &.--textcenter {
+        max-width: 484px;
+        text-align: center;
+        margin: 0 auto;
+        padding-bottom: 60px;
+        padding-left: initial;
+        padding-right: initial;
+        padding-top: initial;
+        .heading {
+            position: relative;
+            flex-direction: column-reverse;
+            &::before {
+                left: initial;
+                right: initial;
+                margin: 10px auto;
+                width: 38px;
+                height: 4px;
+                background: $main-cl;
+            }
+        }
+    }
+    &.--textright {
+        text-align: right;
+        padding-left: 0;
+        padding-right: var(--pd-text-right);
+        padding-left: var(--pd-right);
+        .heading {
+            flex-direction: row-reverse;
+            &:before {
+                margin-left: initial;
+                left: initial;
+                margin-right: -80px;
+                right: -20px;
+            }
+        }
+    }
+    &.--tb-white {
+        margin-bottom: 42px;
+        padding: 0;
+        max-width: 460px;
+        .heading {
+            color: $white-cl;
+            &::before {
+                display: none;
+            }
+            &.--hd-black {
+                color: $black-cl;
+            }
+        }
+        .dsc {
+            color: $white-cl;
+            &.--dsc-black {
+                color: $black-cl;
+            }
+        }
+    }
+    @include sm {
+        padding-left: initial;
+        padding-top: 30px;
+        .heading {
+            &:before {
+                display: none;
+            }
+        }
+    }
+    @include xs {
+        .heading {
+            font-size: 34px;
+        }
+    }
+}

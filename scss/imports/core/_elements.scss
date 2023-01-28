@@ -1,0 +1,95 @@
+.btnround {
+    @include text(14px, pb, 48px, 3.2px, $white-cl, uppercase);
+    padding: 0 30px;
+    border: 1px solid $white-cl;
+    @include mid(true);
+    @include transition($t);
+    i {
+        display: block;
+        margin-left: 15px;
+        position: relative;
+        right: 0;
+        @include transition($t);
+    }
+    &:hover {
+        background: $main-cl;
+        @include transition($t);
+        i {
+            margin-left: 22px;
+            right: -10px;
+            @include transition($t);
+        }
+    }
+    &.--video {
+        display: flex;
+        align-items: center;
+        max-width: 260px;
+        padding: 0 50px;
+        font-size: 12px;
+        .iconplay {
+            @include mid(true);
+            margin-right: 15px;
+            width: 17px;
+            height: 17px;
+            border: 2px solid;
+            border-radius: 50%;
+            img {
+                width: 6px;
+                height: 6px;
+            }
+        }
+    }
+    @include xs {
+        padding: 0 20px;
+    }
+}
+
+.btnmore {
+    @include text(14px, pb, 58px, 3.2px, $black-cl, uppercase);
+    position: relative;
+    @include transition($t);
+    &:before {
+        content: "";
+        height: 2px;
+        width: 37px;
+        background: $main-cl;
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+    }
+    img {
+        position: relative;
+        @include transform(translateX(0px));
+        @include transition($t);
+    }
+    &:hover {
+        img {
+            @include transform(translateX(10px));
+            @include transition($t);
+        }
+    }
+}
+
+.btntop {
+    background-color: $blue-cl;
+    width: 50px;
+    height: 50px;
+    // text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 800;
+    @include transition($t);
+    &:hover {
+        cursor: pointer;
+        background-color: $main-cl;
+        @include transition($t)
+    }
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}

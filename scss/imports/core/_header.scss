@@ -1,0 +1,187 @@
+// css header
+.header {
+    --height-header: 80px;
+    height: var(--height-header);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 300;
+    .container-fluid {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .header__logo {
+            z-index: 201;
+            .hidden {
+                display: none;
+            }
+        }
+        .header__menu {
+            height: 100%;
+            display: flex;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            li {
+                height: 100%;
+                a {
+                    height: 100%;
+                    margin: 0 35px;
+                    position: relative;
+                    overflow: hidden;
+                    @include mid(true);
+                    @include text(15px, pb, 22px, 0.4px, $white-cl, uppercase);
+                    @include transition($t);
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        width: 100%;
+                        height: 1px;
+                        background: $main-cl;
+                        left: 0;
+                        bottom: 30px;
+                        @include transform(scaleX(0));
+                        @include transform-origin( left center);
+                        @include transition($t $cubic);
+                    }
+                    &:hover,
+                    &.active {
+                        color: $main-cl;
+                        &:after {
+                            @include transform(scaleX(1));
+                            @include transform-origin( right center);
+                            @include transition($t $cubic);
+                        }
+                    }
+                }
+            }
+        }
+        .right {
+            display: inline-flex;
+            z-index: 201;
+            .header__lang {
+                position: relative;
+                height: 100%;
+                @include mid(true);
+                &-current {
+                    @include mid(true);
+                    .text {
+                        @include text(var(--body16-fs), pb, auto, 0.8px, $white-cl, uppercase);
+                        cursor: pointer;
+                        @include transition($t);
+                        &:hover {
+                            color: $main-cl;
+                        }
+                    }
+                    i {
+                        @include transform(rotateX(0));
+                        @include transition($t);
+                        @include mid(true);
+                        padding: 5px;
+                    }
+                }
+                &-select {
+                    position: absolute;
+                    top: 30px;
+                    background: #000;
+                    padding: 12px;
+                    opacity: 0;
+                    visibility: hidden;
+                    display: flex;
+                    flex-direction: column;
+                    .item {
+                        @include text(var(--body16-fs), pb, auto, normal, $white-cl, uppercase);
+                        padding: 10px;
+                        @include transition($t);
+                        &:hover {
+                            color: $main-cl
+                        }
+                    }
+                }
+                &.active {
+                    .header__lang-current {
+                        i {
+                            @include transform(rotateX(180deg));
+                            @include transition($t)
+                        }
+                    }
+                    .header__lang-select {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            }
+            .btnmenu {
+                display: none;
+                width: 40px;
+                height: 22px;
+                margin-left: 10px;
+                cursor: pointer;
+                position: relative;
+                span {
+                    display: block;
+                    width: 100%;
+                    height: 2px;
+                    background: $main-cl;
+                    position: absolute;
+                    top: 50%;
+                    @include transform(translateY(-50%));
+                    @include transition($t);
+                }
+                &:before,
+                &:after {
+                    content: "";
+                    width: 100%;
+                    height: 2px;
+                    display: block;
+                    background: $main-cl;
+                }
+                &:after {
+                    position: absolute;
+                    bottom: 0;
+                }
+                &.active {
+                    &:before {
+                        @include transform(rotate(45deg) translate(8px, 8px));
+                        @include transition(transform $t);
+                    }
+                    span {
+                        opacity: 0;
+                        @include transition($t);
+                    }
+                    &:after {
+                        @include transform(rotate(-45deg) translate(5px, -8px));
+                        @include transition(transform $t);
+                    }
+                }
+            }
+        }
+    }
+    //tablet 991px
+    @include sm {
+        .container-fluid {
+            .header__menu {
+                display: none;
+            }
+            .right {
+                z-index: 201;
+                .btnmenu {
+                    display: block;
+                }
+            }
+        }
+    }
+    // mobile 767px
+    @include xs {
+        --height-header: 60px;
+        .container-fluid {
+            .right {
+                .btnmenu {
+                    display: block;
+                }
+            }
+        }
+    }
+}

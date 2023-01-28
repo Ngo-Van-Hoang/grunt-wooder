@@ -1,0 +1,34 @@
+// css navigator (Menu)
+.nav {
+    width: 100vw;
+    height: 100vh;
+    background: $black-cl;
+    position: fixed;
+    top: 0;
+    left: 0;
+    @include transform(initial);
+    z-index: 200;
+    @include visible(0);
+    @include transition($t);
+    ul {
+        flex-direction: column;
+        @include mid();
+        li {
+            text-align: center;
+            margin: 0 auto;
+            padding: 20px;
+            a {
+                @include text(15px, pb, 22px, 0.4px, $white-cl, uppercase);
+                @include transition($t);
+                &:hover {
+                    color: $main-cl;
+                    @include transition($t);
+                }
+            }
+        }
+    }
+    &.active {
+        @include visible(1);
+        @include transition($t);
+    }
+}
